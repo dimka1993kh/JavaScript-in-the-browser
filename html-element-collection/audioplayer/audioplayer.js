@@ -1,15 +1,14 @@
 function arrayFrom(array) {
     return array = Array.from(array)[0];
 }
-function playAudio() {
+function playStateAudio() {
     player.src = audioArray[numberAudio];
+    if (mediaplayer.classList.contains('play')) {
+        player.pause();
+    } else {
+        player.play();
+    }   
     mediaplayer.classList.toggle('play');
-    player.play();
-}
-
-function pauseAudio() {
-    mediaplayer.classList.toggle('play');
-    player.pause();
 }
 
 function nextAudio() {
@@ -34,13 +33,14 @@ function backAudio() {
 }
 
 const mediaplayer = arrayFrom(document.getElementsByClassName('mediaplayer'));
-const playButton = arrayFrom(document.getElementsByClassName('fa fa-play'));
-const pauseButton = arrayFrom(document.getElementsByClassName('fa fa-pause'));
+const playstateButton = arrayFrom(document.getElementsByClassName('playstate'));
+const pauseButton = arrayFrom(document.getElementsByClassName('mediaplayer pause'));
+const playButton = arrayFrom(document.getElementsByClassName('mediaplayer play'));
 const backButton = arrayFrom(document.getElementsByClassName('back'));
 const stopButton = arrayFrom(document.getElementsByClassName('stop'));
 const nextButton = arrayFrom(document.getElementsByClassName('next'));
 
-const pauseImage = arrayFrom(document.getElementsByClassName('fa fa-pause'))
+const pauseImage = arrayFrom(document.getElementsByClassName('fa-pause'))
 
 const player = arrayFrom(document.getElementsByTagName('audio'));
 
@@ -56,13 +56,13 @@ const audioArray = ['https://netology-code.github.io/hj-homeworks/html-element-c
 
 let numberAudio = 0
 
-playButton.onclick = playAudio;
-pauseButton.onclick = pauseAudio;
+playstateButton.onclick = playStateAudio;
 backButton.onclick = backAudio;
 nextButton.onclick = nextAudio;
 
 stopButton.onclick = () => {
-    pauseAudio();
+    mediaplayer.classList.remove('play');
+    player.pause();
     player.currentTime = 0;
 }
 

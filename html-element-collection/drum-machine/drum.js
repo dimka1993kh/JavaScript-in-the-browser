@@ -3,53 +3,20 @@ function arrayFrom(array) {
     return array;
 }
 
-const clapCollection = document.getElementsByClassName("drum-kit__drum key-clap");
-const clap = arrayFrom(clapCollection);
+const collection = [];
+collection.push(document.getElementsByClassName("drum-kit__drum key-clap"));
+collection.push(document.getElementsByClassName("drum-kit__drum key-hihat"));
+collection.push(document.getElementsByClassName("drum-kit__drum key-kick"));
+collection.push(document.getElementsByClassName("drum-kit__drum key-openhat"));
+collection.push(document.getElementsByClassName("drum-kit__drum key-boom"));
+collection.push(document.getElementsByClassName("drum-kit__drum key-ride"));
 
-const hihatCollection = document.getElementsByClassName("drum-kit__drum key-hihat");
-const hihat = arrayFrom(hihatCollection);
+collection.forEach((button) => {
+    function playAudio() {
+        arrayFrom(arrayFrom(button).getElementsByTagName('audio')).currentTime = 0;
+        arrayFrom(arrayFrom(button).getElementsByTagName('audio')).play();
+    }
+    arrayFrom(button).onclick = playAudio;
+})
 
-const kickCollection = document.getElementsByClassName("drum-kit__drum key-kick");
-const kick = arrayFrom(kickCollection);
-
-const openhatCollection = document.getElementsByClassName("drum-kit__drum key-openhat");
-const openhat = arrayFrom(openhatCollection);
-
-const boomCollection = document.getElementsByClassName("drum-kit__drum key-boom");
-const boom = arrayFrom(boomCollection);
-
-const rideCollection = document.getElementsByClassName("drum-kit__drum key-ride");
-const ride = arrayFrom(rideCollection);
-
-const soundClap = clap.getElementsByTagName('audio');
-const soundHihat = hihat.getElementsByTagName('audio');
-const soundKick = kick.getElementsByTagName('audio');
-const soundOpenhat = openhat.getElementsByTagName('audio');
-const soundBoom = boom.getElementsByTagName('audio');
-const soundRide = ride.getElementsByTagName('audio');
-
-function playClap() {
-    arrayFrom(soundClap).play();
-}
-function playHihat() {
-    arrayFrom(soundHihat).play();
-}
-function playKick() {
-    arrayFrom(soundKick).play();
-}
-function playOpenhat() {
-    arrayFrom(soundOpenhat).play();
-}
-function playBoom() {
-    arrayFrom(soundBoom).play();
-}
-function playRide() {
-    arrayFrom(soundRide).play();
-}
-clap.onclick = playClap;
-hihat.onclick = playHihat;
-kick.onclick = playKick;
-openhat.onclick = playOpenhat;
-boom.onclick = playBoom;
-ride.onclick = playRide;
 
