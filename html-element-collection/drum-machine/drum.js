@@ -1,22 +1,14 @@
-function arrayFrom(array) {
-    array = Array.from(array)[0];
-    return array;
-}
+'use strict'
 
-const collection = [];
-collection.push(document.getElementsByClassName("drum-kit__drum key-clap"));
-collection.push(document.getElementsByClassName("drum-kit__drum key-hihat"));
-collection.push(document.getElementsByClassName("drum-kit__drum key-kick"));
-collection.push(document.getElementsByClassName("drum-kit__drum key-openhat"));
-collection.push(document.getElementsByClassName("drum-kit__drum key-boom"));
-collection.push(document.getElementsByClassName("drum-kit__drum key-ride"));
+const buttons = document.getElementsByClassName("drum-kit__drum");
 
-collection.forEach((button) => {
+Array.from(buttons).forEach((button) => {
     function playAudio() {
-        arrayFrom(arrayFrom(button).getElementsByTagName('audio')).currentTime = 0;
-        arrayFrom(arrayFrom(button).getElementsByTagName('audio')).play();
+        const audio = button.getElementsByTagName('audio')[0];
+        audio.currentTime = 0;
+        audio.play();
     }
-    arrayFrom(button).onclick = playAudio;
+    button.onclick = playAudio;
 })
 
 

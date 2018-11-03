@@ -18,8 +18,9 @@ function nextAudio() {
     }
     nameSongInPlayer.title = nameAudio[numberAudio];
     player.src = audioArray[numberAudio];
-    mediaplayer.classList.add('play');
-    player.play();
+    if (mediaplayer.classList.contains('play')) { // добавил данный код
+        player.play();
+    }
 }
 function backAudio() {
     numberAudio--;
@@ -28,8 +29,9 @@ function backAudio() {
     }
     nameSongInPlayer.title = nameAudio[numberAudio];
     player.src = audioArray[numberAudio];
-    mediaplayer.classList.add('play');
-    player.play();
+    if (mediaplayer.classList.contains('play')) { // добавил данный код
+        player.play();
+    }
 }
 
 const mediaplayer = arrayFrom(document.getElementsByClassName('mediaplayer'));
