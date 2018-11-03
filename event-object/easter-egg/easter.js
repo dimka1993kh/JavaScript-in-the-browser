@@ -13,15 +13,9 @@ document.addEventListener('keydown', () => {
     if (event.code.length === 4) { // ИСПОЛЬЗУЕМ ДЛЯ ТОГО, ЧТОБЫ НЕ СЧИТАЛИСЬ СТРЕЛКИ, SHIFT И Т.Д.
         enteredSecretCode = enteredSecretCode.concat((event.code).substr(3).toLowerCase()); //ЕСЛИ ПИШЕМ КАКУЮ-ТО БУКВУ Х, ТО ИЗ KEYX ВЫДЕЛЯЕМ ТОЛЬКО Х И МЕНЯЕМ РЕГИСТР НА НИЖНИЙ
     }
-    if (enteredSecretCode.length === secretCode.length) { // УСЛОВИЕ, СОЗДАННОГОЕ ДЛЯ ТОГО, ЧТОБЫ ОПРЕДЕЛЯТЬ, ВВЕЛИ ЛИ МЫ СЛОВО ДЛИННОЙ С СЕКРЕТНОЕ СЛОВО
-        if (enteredSecretCode === secretCode) { //ЕСЛИ СЛОВО ТОЧНО РВНО СЕКРЕТНОМУ, ТО ЗАПУСКАЕМ ПАСХАЛКУ
-            secret.classList.toggle('visible');
-            enteredSecretCode = ''
-        } else { // ЕСЛИ МЫ ОШИБЛИСЬ ИЛИ НЕ ЗНАЕМ СЛОВО, ТО ПОКАЗЫВАЕМ СООБЩЕНИЕ ОБ ЭТОМ И УДАЛЯЕМ ВВЕДЕННОЕ СЛОВО, ЧТОБЫ МОЖНО БЫЛО НАЧАТЬ ЗАНОВО
-            enteredSecretCode = '';
-            alert('Неверно введен код');
-        };
-    };
+    if (enteredSecretCode.slice(-secretCode.length) === secretCode) { //ЕСЛИ СЛОВО ТОЧНО РВНО СЕКРЕТНОМУ, ТО ЗАПУСКАЕМ ПАСХАЛКУ
+        secret.classList.toggle('visible');
+    }
 });
 
 

@@ -18,15 +18,36 @@ const higher = ['https://goo.gl/HeJGGN',
                                 
 
 const buttonCollection = document.getElementsByTagName('li');
+const typePianino = document.getElementsByClassName('set');
+
+document.addEventListener('keydown', () => {
+    if (event.repeat) {
+    if (event.shiftKey) { // определеим, нажаты ли Alt или Shift и запишем в src необходимый url.
+        Array.from(typePianino)[0].classList.remove('middle');
+        Array.from(typePianino)[0].classList.remove('higher');
+        Array.from(typePianino)[0].classList.add('lower');
+    } 
+    if (event.altKey) {
+        Array.from(typePianino)[0].classList.remove('middle');
+        Array.from(typePianino)[0].classList.remove('lower');
+        Array.from(typePianino)[0].classList.add('higher');
+    }
+}
+});
+document.addEventListener('keyup', () => { 
+    Array.from(typePianino)[0].classList.add('middle');
+    Array.from(typePianino)[0].classList.remove('lower');
+    Array.from(typePianino)[0].classList.remove('higher');
+    });
 
 for (const button of buttonCollection) { //переберем кнопки
     const index = Array.from(buttonCollection).indexOf(button); // определим номер кнопки, на которую нажимаем
     const audio = Array.from(document.getElementsByTagName('audio'))[index]; //определим, в какой тег audio запишем src
     
-    button.addEventListener('click', () => { // создадим событие
-        if (event.shiftKey) { // определеим, нажаты ли Alt или Shift и запишем в src необходимый url.
+    button.addEventListener('click', () => { // создадим событие  
+        if (Array.from(typePianino)[0].classList.contains('lower')) {
             audio.src = lower[index];
-        } else if (event.altKey) {
+        } else if (Array.from(typePianino)[0].classList.contains('higher')) {
             audio.src = higher[index]; 
         } else {
             audio.src = middle[index]
