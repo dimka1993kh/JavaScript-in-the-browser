@@ -1,10 +1,7 @@
 const newContacts = JSON.parse(loadContacts());
-console.log(newContacts)
 const contactsList = document.getElementsByClassName('contacts-list')[0];
-let array = [];
+let string = '';
 newContacts.forEach((newContact) => {
-    let ggg = newContact.phone;
-    console.log(typeof(`${ggg}`))
-    array.push(`<li data-email = ${newContact.email} data-phone = ${ggg}><strong>${newContact.name}</strong></li>`);
+    string += `<li data-email = "${newContact.email}" data-phone = "${newContact.phone}"><strong>${newContact.name}</strong></li>`;
 })
-contactsList.innerHTML = array;
+contactsList.innerHTML = string;
