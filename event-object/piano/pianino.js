@@ -21,8 +21,8 @@ const buttonCollection = document.getElementsByTagName('li');
 const typePianino = document.getElementsByClassName('set');
 
 document.addEventListener('keydown', () => {
-    if (event.repeat) {
-    if (event.shiftKey) { // определеим, нажаты ли Alt или Shift и запишем в src необходимый url.
+    if (event.shiftKey) {
+ // определеим, нажаты ли Alt или Shift и запишем в src необходимый url.
         Array.from(typePianino)[0].classList.remove('middle');
         Array.from(typePianino)[0].classList.remove('higher');
         Array.from(typePianino)[0].classList.add('lower');
@@ -32,7 +32,6 @@ document.addEventListener('keydown', () => {
         Array.from(typePianino)[0].classList.remove('lower');
         Array.from(typePianino)[0].classList.add('higher');
     }
-}
 });
 document.addEventListener('keyup', () => { 
     Array.from(typePianino)[0].classList.add('middle');
@@ -55,7 +54,6 @@ for (const button of buttonCollection) { //переберем кнопки
         audio.play();
         });
     }
-
 
     
 

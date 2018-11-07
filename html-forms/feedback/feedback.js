@@ -11,7 +11,6 @@ Array.from(input).forEach((objectOnPage) => {
     objectsOnPage.push(objectOnPage);
 });
 objectsOnPage.push(textarea[0]);
-console.log(objectsOnPage)
 
 function fillingOutForms() {
     if (this.name === 'zip') {
@@ -22,10 +21,8 @@ function fillingOutForms() {
     }
     if ((this.value !== '') && (this.value !== undefined)) {
         counter++; 
-        console.log(counter) 
     } else if (this.value === '') {
         counter--;
-        console.log(counter)
     } else {
         return;
     }
@@ -38,7 +35,6 @@ function fillingOutForms() {
 objectsOnPage.forEach((element) => {
     if (element.value !== '') {
         counter++;  
-        console.log(counter)
         
     }
 })
