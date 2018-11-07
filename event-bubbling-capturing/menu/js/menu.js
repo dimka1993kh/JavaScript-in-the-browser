@@ -1,7 +1,7 @@
 'use strict';
 
 function toggleMenu(event) {
-    if ((this.classList.contains('show')) && (event.target.parentElement.classList.contains('dropdown'))) {
+    if (this.classList.contains('show')) {
       this.classList.remove('show');
       this.classList.add('hide');
     } else {
@@ -12,7 +12,8 @@ function toggleMenu(event) {
 
 function openLink(event) {
   event.preventDefault();
-    console.log(this.textContent);
+  console.log(this.textContent);
+  event.stopPropagation();
 }
 
 function init(node) {

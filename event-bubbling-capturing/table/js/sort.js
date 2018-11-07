@@ -6,6 +6,7 @@ function handleTableClick(event) {
         if (this.dataset.sortBy === event.target.dataset.propName) {
             direction = -1;
         }
+        event.target.dataset.dir = direction;
         table.dataset.sortBy = event.target.dataset.propName;
         sortTable(event.target.dataset.propName, direction);
     }
