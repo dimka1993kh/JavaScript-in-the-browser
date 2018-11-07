@@ -3,10 +3,10 @@ const done = document.getElementsByClassName('done');
 const undone = document.getElementsByClassName('undone');
 
 function movingFunc() {
-        if (this.parentElement.parentElement === done[0]) {
+        if (!event.target.checked) {
             undone[0].appendChild(this.parentElement);
             this.classList.remove('checked');
-         } else if (this.parentElement.parentElement === undone[0]) {
+         } else {
             done[0].appendChild(this.parentElement);
             this.classList.add('checked');
          }
