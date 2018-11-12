@@ -1,6 +1,5 @@
 'use strict';
 
-
 const counter = document.getElementById('counter');
 const buttons = document.querySelector('.wrap-btns');
 buttons.addEventListener('click', pushOnButton);
