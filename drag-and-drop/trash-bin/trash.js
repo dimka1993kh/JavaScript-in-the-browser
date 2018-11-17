@@ -6,6 +6,7 @@ const trashBin = document.querySelector('#trash_bin');
 let movedPiece = null;
 let shiftX = 0;
 let shiftY = 0;
+
 document.addEventListener('mousedown', event => {
     if (event.target.classList.contains('logo')) {
         movedPiece = event.target;
@@ -30,10 +31,10 @@ document.addEventListener('mouseup', event => {
         const check = document.elementFromPoint(event.clientX, event.clientY).closest('#trash_bin');
         movedPiece.style.visibility = 'visible';
         if (check) {
-        movedPiece.classList.remove('moving');
         movedPiece.style.display = 'none';
-        movedPiece = null;
         }
+        movedPiece.classList.remove('moving');
+        movedPiece = null;
     }
     });
         
